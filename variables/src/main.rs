@@ -1,13 +1,20 @@
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
 fn main() {
-    let mut a = String::from("Hello");
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
 
-    let r1 = &a;
-    let r2 = &a;
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(&rect1)
+    );
+}
 
-    println!("{r1}, {r2}");
-
-    let r3 = &mut a;
-
-    r3.push_str(", world!");
-    println!("{r3}");
+fn area(rectangle: &Rectangle) -> u32 {
+    rectangle.width * rectangle.height
 }
