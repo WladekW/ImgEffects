@@ -113,11 +113,16 @@ pub fn ordered_dither_duoton(n: usize, img: &DynamicImage) -> ImageBuffer<Rgb<u8
             _ => panic!("Unsupported dither size"),
         };
 
-        let out_r = (r * dithered_val * 255.0) as u8;
-        let out_g = (g * dithered_val * 255.0) as u8;
-        let out_b = (b * dithered_val * 255.0) as u8;
+        let lowcolor: [u8; 3] = [35, 8, 81];
+        let highcolor: [u8; 3] = [248, 60, 31];
 
-        img_out.put_pixel(x, y, Rgb([out_r, out_g, out_b]));
+        let final_color = if dithered_val > 0.5{
+            highcolor
+        } else{
+            lowcolor
+        };
+
+        img_out.put_pixel(x, y, Rgb(final_color));
     }
 
     img_out

@@ -10,15 +10,20 @@ fn main() -> Result<(), Box<dyn std::error::Error>>{
     println!("{:?}", img.color());
 
 
-    let img_out = dither::ordered_dither(4, &img);
+    let img_out = dither::ordered_dither(8, &img);
 
     img_out.save("C:/Users/Wlad/Downloads/gb.png")?;
-    println!("Obraz b/w zapisany!");
+    println!("Img b/w saved!");
 
-    let img_out = dither::ordered_dither_colored(2, &img);
+    let img_out = dither::ordered_dither_colored(8, &img);
 
     img_out.save("C:/Users/Wlad/Downloads/clr.png")?;
-    println!("Obraz clr zapisany!");
+    println!("Img clr saved!");
+
+    let img_out = dither::ordered_dither_duoton(8, &img);
+
+    img_out.save("C:/Users/Wlad/Downloads/duo.png")?;
+    println!("Img duo saved!");
 
     Ok(())
 }
