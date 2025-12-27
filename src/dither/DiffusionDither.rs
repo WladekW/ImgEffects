@@ -95,7 +95,7 @@ pub fn ordered_dither_colored(n: usize, img: &DynamicImage) -> ImageBuffer<Rgb<u
     img_out
 }
 
-pub fn ordered_dither_duoton(n: usize, img: &DynamicImage) -> ImageBuffer<Rgb<u8>, Vec<u8>> {
+pub fn ordered_dither_duoton(n: usize, img: &DynamicImage, lowcolor: [u8; 3], highcolor: [u8; 3] ) -> ImageBuffer<Rgb<u8>, Vec<u8>> {
     let (img_x, img_y) = img.dimensions();
     let mut img_out = ImageBuffer::new(img_x, img_y);
 
@@ -112,9 +112,6 @@ pub fn ordered_dither_duoton(n: usize, img: &DynamicImage) -> ImageBuffer<Rgb<u8
             8 => dither_generic(x, y, luma, &DITHER_MATRIX_8X8, 8),
             _ => panic!("Unsupported dither size"),
         };
-
-        let lowcolor: [u8; 3] = [35, 8, 81];
-        let highcolor: [u8; 3] = [248, 60, 31];
 
         let final_color = if dithered_val > 0.5{
             highcolor
