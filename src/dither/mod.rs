@@ -1,2 +1,2 @@
-pub mod DiffusionDither;
-pub mod OrderedDither;
+pub mod diffusion;
+pub mod ordered;
