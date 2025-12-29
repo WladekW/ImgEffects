@@ -1,0 +1,12 @@
+[package]
+name = "dither-core"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "dither_core"
+path = "src/lib.rs"
+
+[dependencies]
+image = "0.25.9"
+rayon = "1.11.0"

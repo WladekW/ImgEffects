@@ -1,0 +1,13 @@
+[package]
+name = "dither-gui"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dither-core = { path = "../core" }
+eframe = "0.33.3"
+rfd = "0.15.4"
+image = "0.25.9"
+
+[build-dependencies]
+embed-resource = "3.0.6"
